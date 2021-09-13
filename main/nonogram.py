@@ -6,7 +6,7 @@ class Nonogram:
     # Initialise with grid array of a x a nonogram
     # additional list will be made for row and column for number clues
     def __init__(self, size):
-        self._grid = np.zeros((size, size))
+        self._grid = np.full((size, size), 'O')
         self._column_clues = []
         self._row_clues = []
 
@@ -54,3 +54,12 @@ class Nonogram:
 
         #present_row_clues = np.array(self.row_clues)
         #print(present_row_clues)
+
+    def solve_large_single_clue(self):
+        # start by looking for large number in row/column clues
+        for a in self.column_clues:
+            if len(self.column_clues[a]) == 1:
+                if self.column_clues[a] > len(self.grid)/2:
+                    self.grid[(len(self.grid)-a):a][self.column_clues.index(a)]
+
+
