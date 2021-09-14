@@ -58,8 +58,17 @@ class Nonogram:
     def solve_large_single_clue(self):
         # start by looking for large number in row/column clues
         for a in self.column_clues:
-            if len(self.column_clues[a]) == 1:
-                if self.column_clues[a] > len(self.grid)/2:
-                    self.grid[(len(self.grid)-a):a][self.column_clues.index(a)]
+            if len(a) == 1:
+                if a[0] > len(self.grid)/2:
+                    for i in range((len(self.grid)-a[0]), a[0]):
+                        self.grid[i][self.column_clues.index(a)] = '*'
 
+        for a in self.row_clues:
+            if len(a) == 1:
+                if a[0] > len(self.grid)/2:
+                    for i in range((len(self.grid)-a[0]), a[0]):
+                        self.grid[self.row_clues.index(a)][i] = '*'
+
+    #def solve_large_multiple_clue(self):
+        #look for large multiple clues, with essential boxes
 
