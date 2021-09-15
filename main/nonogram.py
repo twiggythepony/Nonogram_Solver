@@ -69,6 +69,18 @@ class Nonogram:
                     for i in range((len(self.grid)-a[0]), a[0]):
                         self.grid[self.row_clues.index(a)][i] = '*'
 
-    #def solve_large_multiple_clue(self):
-        #look for large multiple clues, with essential boxes
+    def solve_large_multiple_clue(self):
+        # look for large multiple clues, with essential overlap boxes
+        for a in self.column_clues:
+            if len(a) > 1:
+                # find largest number first
+                largest_number = max(a)
+                sum_boxes = sum(a) + len(a) - 1 + largest_number
+                if sum_boxes > len(self.grid):
+                    # there are some overlapping boxes
+
+
+
+
+
 
